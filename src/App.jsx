@@ -33,7 +33,6 @@ function DiceRollingApp() {
   );
 }
 
-// Inline styles for the component
 const styles = {
   container: {
     textAlign: 'center',
@@ -58,7 +57,7 @@ const styles = {
     padding: '10px 20px',
     fontSize: '20px',
     cursor: 'pointer',
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#850deeff',
     color: 'white',
     border: 'none',
     borderRadius: '5px',
