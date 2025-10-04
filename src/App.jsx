@@ -50,7 +50,7 @@ function DiceRollingApp() {
             <p style={styles.punchline}> Punchline :  {joke.punchline} </p>
           </div>
         ) : (
-          <p>Hit the button to get a Fresh Joke</p>
+          <p>Hit the button to get a Fresh Joke Everytime</p>
         )}
       </div>
     </div>
