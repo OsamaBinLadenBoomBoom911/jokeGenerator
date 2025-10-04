@@ -5,18 +5,31 @@ import { useEffect } from 'react';
 function DiceRollingApp() {
   // useState hook to keep track of the dice roll value
   const [diceValue, setDiceValue] = useState(1);
-  const [data, setData] = useState(null);
+  const [joke, setJoke] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchJoke = async () => {
+    setIsLoading(true);
+    try{
+      const response = await axios.get('https://official-joke-api.appspot.com/random_joke');
+      setJoke(response.data);
+    }catch(err) {
+      console.error('There was an error!', err);
+    }finally{
+      setIsLoading(false);
+    }
+  }
 
   useEffect(() => {
-    axios.get('https://official-joke-api.appspot.com/random_joke')
-      .then(response => setData(response.data))
-      .catch(error => console.error('There was an error!', error));
+    fetchJoke();
   }, [])
 
-  const rollDice = () => {
+  const rollDiceAndFetchJoke = () => {
     const randomValue = Math.floor(Math.random() * 6) + 1;
     setDiceValue(randomValue);
-  };
+
+    fetchJoke();
+  }
 
   return (
     <div style={styles.container}>
